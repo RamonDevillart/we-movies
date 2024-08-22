@@ -8,7 +8,6 @@ import { Movie } from "../../types/Movie";
 
 import IconShoppingBag from "../../assets/images/Vector.png";
 
-// Estilização do Header
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;

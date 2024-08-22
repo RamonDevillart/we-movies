@@ -1,5 +1,5 @@
 // src/components/Movies.tsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import IconCart from "../../assets/images/mdaddshoppingcart 1.png";
 import { useDispatch, useSelector } from "react-redux";

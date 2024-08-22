@@ -19,6 +19,12 @@ const GlobalStyles = createGlobalStyle`
     height: 100vh;
     margin: 0;
   }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 0;
+    }
+  }
 `;
 
 export default GlobalStyles;

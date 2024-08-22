@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 interface ModalProps {
@@ -16,6 +16,7 @@ const ModalOverlay = styled.div<{ isOpen: boolean }>`
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  color: black;
 `;
 
 const ModalContent = styled.div`
@@ -29,6 +30,10 @@ const ModalContent = styled.div`
   width: 500px;
   max-width: 90%;
   z-index: 1001;
+  height: 20rem;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 `;
 
 const CloseButton = styled.button`
@@ -41,7 +46,16 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
+
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+    
+    useEffect(()=>{
+        if(isOpen === true) {
+            setTimeout(() => {
+                window.location.href='/post-purchase';                
+            }, 1500);
+        }
+    },[isOpen])
   return (
     <ModalOverlay isOpen={isOpen}>
       <ModalContent>

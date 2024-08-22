@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Successful from "../../assets/images/Frame 2115.png";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/cartSlice";
 
-const PsotPurchaseContainer = styled.div`
+const PostPurchaseContainer = styled.div`
   width: 100%;
   background-color: #fff;
   color: black;
@@ -42,18 +44,30 @@ const Button = styled.button`
     background-color: #2980b9;
   }
 `;
+const PageContainer = styled.div`
+  text-align: center;
+  padding: 1rem;
+`;
 
 const handleBackToHome = () => {
   window.location.href='/'
 }
 
 const PsotPurchase = () => {
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(clearCart());
+  },[])
+
   return (
-    <PsotPurchaseContainer>
-      <NothingHereTitle>Compra realizada com sucesso!</NothingHereTitle>
-      <img width={295} height={307} src={Successful} />      
-      <Button onClick={handleBackToHome} >Voltar</Button>
-    </PsotPurchaseContainer>
+    <PageContainer>
+      <PostPurchaseContainer>
+        <NothingHereTitle>Compra realizada com sucesso!</NothingHereTitle>
+        <img width={295} height={307} src={Successful} />
+        <Button onClick={handleBackToHome} >Voltar</Button>
+      </PostPurchaseContainer>
+    </PageContainer>
   );
 };
 
