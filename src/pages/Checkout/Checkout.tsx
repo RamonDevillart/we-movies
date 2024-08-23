@@ -7,6 +7,8 @@ import CheckoutMoviesListMobile from "../../components/CheckoutMoviesList/Checko
 import Spinner from "../../components/Spinner/Spinner";
 import Modal from "../../components/Modal/Modal";
 import CheckoutMoviesListDesktop from "../../components/CheckoutMoviesList/CheckoutMoviesListDesktop";
+import PsotPurchase from "../../components/PostPurchase/PostPurchase";
+import { clearCart } from "../../redux/cartSlice";
 
 
 const PageContainer = styled.div`
@@ -80,6 +82,15 @@ const Checkout: React.FC = () => {
   const cart = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
+  useEffect(()=>{
+    if(modalOpen === true) {
+        setTimeout(() => {
+          setModalOpen(false)
+          dispatch(clearCart());               
+        }, 1500);
+    }
+},[modalOpen])
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) setScreenSize("mobile");
@@ -94,9 +105,6 @@ const Checkout: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if(cart.length === 0) window.location.href='/'
-  }, [cart])
 
   const renderTotalPrice = () => {
     // Calculate the value of each movie
@@ -138,7 +146,7 @@ const Checkout: React.FC = () => {
       </PageContainer>
       :
       <PageContainer>
-        <Spinner />
+       <PsotPurchase />
       </PageContainer>
       }
     <Modal isOpen={modalOpen} onClose={closeModal}>

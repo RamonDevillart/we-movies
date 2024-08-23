@@ -54,11 +54,7 @@ const handleBackToHome = () => {
 }
 
 const PsotPurchase = () => {
-  const dispatch = useDispatch();
-
-  useEffect(()=> {
-    dispatch(clearCart());
-  },[])
+ 
 
   return (
     <PageContainer>

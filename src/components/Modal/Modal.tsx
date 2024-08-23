@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { clearCart } from '../../redux/cartSlice';
 
 interface ModalProps {
   isOpen: boolean;
@@ -48,14 +50,7 @@ const CloseButton = styled.button`
 
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-    
-    useEffect(()=>{
-        if(isOpen === true) {
-            setTimeout(() => {
-                window.location.href='/post-purchase';                
-            }, 1500);
-        }
-    },[isOpen])
+     
   return (
     <ModalOverlay isOpen={isOpen}>
       <ModalContent>
